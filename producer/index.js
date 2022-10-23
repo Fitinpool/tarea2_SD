@@ -1,26 +1,22 @@
-import Kafka from 'node-rdkafka';
-import * as dotenv from 'dotenv' 
-dotenv.config()
-import express from 'express'
+import express from "express"
+import bodyParser from "body-parser"
+import { creaTopics } from "./creaTopic.js";
+import { nuevosMiembros } from "./enviaTopic.js";
 
-const stream = Kafka.Producer.createWriteStream({
-  'metadata.broker.list': 'localhost:9092'
-}, {}, {
-    topic: 'test'
-  });
+const app = express()
+const port = 1000
 
-function quequeMessage(){
-  const success = stream.write(Buffer.from('h1'));
-  if(success)
-  {
-    console.log("mensaje en cola")
-  }
-  else
-  {
-    console.log("Algo salio mal")
-  }
-}
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-setInterval(() => {
-  quequeMessage()
-}, 3000);
+creaTopics();
+
+app.post('/registroMiembro', (req, res) => {
+  console.log(req.body)
+  nuevosMiembros(req.body);
+  res.send("Toro bn!")
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
