@@ -1,5 +1,4 @@
 import Kafka from 'node-rdkafka';
-import { miembro } from '../eventType.js';
 
 export function nuevosMiembros(data)
 {
@@ -13,7 +12,7 @@ export function nuevosMiembros(data)
     
     producer.on('ready', function(arg) {
 
-        var value = miembro.toBuffer(data);
+        var value = Buffer.from(JSON.stringify(data));
         var key = null;
         if(data.registro === 'premium')
         {
@@ -24,6 +23,106 @@ export function nuevosMiembros(data)
         }
         var headers = [
             { header: "Miembro nuevo!!" }
+        ]
+        
+        console.log(producer.produce(topicName, partition, value, key, Date.now(), "", headers))
+    });
+  
+    producer.connect();
+}
+
+export function ventaDiaria(data)
+{
+
+    var producer = new Kafka.Producer({
+        'metadata.broker.list': 'localhost:9092',
+        'dr_cb': true
+    });
+      
+    var topicName = 'venta';
+    
+    producer.on('ready', function(arg) {
+
+        var value = Buffer.from(JSON.stringify(data));
+        var key = null;
+        var partition = 1
+        var headers = [
+            { header: "Nueva venta!!" }
+        ]
+        
+        console.log(producer.produce(topicName, partition, value, key, Date.now(), "", headers))
+    });
+  
+    producer.connect();
+}
+
+export function reponerStock(data)
+{
+
+    var producer = new Kafka.Producer({
+        'metadata.broker.list': 'localhost:9092',
+        'dr_cb': true
+    });
+      
+    var topicName = 'venta';
+    
+    producer.on('ready', function(arg) {
+
+        var value = Buffer.from(JSON.stringify(data));
+        var key = null;
+        var partition = 2
+        var headers = [
+            { header: "Stock!!" }
+        ]
+        
+        console.log(producer.produce(topicName, partition, value, key, Date.now(), "", headers))
+    });
+  
+    producer.connect();
+}
+
+export function ubicacionVenta(data)
+{
+
+    var producer = new Kafka.Producer({
+        'metadata.broker.list': 'localhost:9092',
+        'dr_cb': true
+    });
+      
+    var topicName = 'ubicacion';
+    
+    producer.on('ready', function(arg) {
+
+        var value = Buffer.from(JSON.stringify(data));
+        var key = null;
+        var partition = 1
+        var headers = [
+            { header: "Ubicacion!!" }
+        ]
+        
+        console.log(producer.produce(topicName, partition, value, key, Date.now(), "", headers))
+    });
+  
+    producer.connect();
+}
+
+export function carritoExtrano(data)
+{
+
+    var producer = new Kafka.Producer({
+        'metadata.broker.list': 'localhost:9092',
+        'dr_cb': true
+    });
+      
+    var topicName = 'ubicacion';
+    
+    producer.on('ready', function(arg) {
+
+        var value = Buffer.from(JSON.stringify(data));
+        var key = null;
+        var partition = 2
+        var headers = [
+            { header: "Ubicacion!!" }
         ]
         
         console.log(producer.produce(topicName, partition, value, key, Date.now(), "", headers))

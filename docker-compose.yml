@@ -21,11 +21,9 @@ services:
       - zookeeper
   postgresql-master:
       image: 'bitnami/postgresql:14'
-      ports:
-        - '5432'
       environment:
         - POSTGRESQL_USERNAME=user
         - POSTGRESQL_PASSWORD=user
         - POSTGRESQL_DATABASE=tarea2
       volumes:
-        - ../postgres/schema.sql:/docker-entrypoint-initdb.d/create_schema.sql
+        - ./postgres/schema.sql:/docker-entrypoint-initdb.d/create_schema.sql

@@ -19,7 +19,7 @@ export async function creaTopics()
             if(err) {
                 if(err.code == 36)
                 {
-                    console.log('Topic ya existe, porfavor borre el topic anterior en caso de fallo')
+                    console.log('Topic nuevosMiembros ya existe, porfavor borre el topic anterior en caso de fallo')
                 }
                 else
                 {
@@ -27,6 +27,50 @@ export async function creaTopics()
                 }
             } else {
                 console.log('Topic nuevosMiembros creado');
+            }
+        }
+      );
+
+      await admin.createTopic({
+        topic: 'venta',
+        num_partitions: 3,
+        replication_factor: 1,
+        config: { 'retention.ms': (24*60*60*1000).toString() }
+        }, 
+        function(err) {
+            if(err) {
+                if(err.code == 36)
+                {
+                    console.log('Topic venta ya existe, porfavor borre el topic anterior en caso de fallo')
+                }
+                else
+                {
+                    console.log(err);
+                }
+            } else {
+                console.log('Topic venta creado');
+            }
+        }
+      );
+
+      await admin.createTopic({
+        topic: 'ubicacion',
+        num_partitions: 3,
+        replication_factor: 1,
+        config: { 'retention.ms': (24*60*60*1000).toString() }
+        }, 
+        function(err) {
+            if(err) {
+                if(err.code == 36)
+                {
+                    console.log('Topic ubicacion ya existe, porfavor borre el topic anterior en caso de fallo')
+                }
+                else
+                {
+                    console.log(err);
+                }
+            } else {
+                console.log('Topic ubicacion creado');
             }
         }
       );
