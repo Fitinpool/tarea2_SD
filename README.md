@@ -31,7 +31,7 @@ node preparaStock.js
 para ventas diarias
 
 ```sh
-node ventaDIaria.js
+node ventaDiaria.js
 ```
 
 para ubicacion
