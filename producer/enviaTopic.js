@@ -81,7 +81,7 @@ export function reponerStock(data)
     producer.connect();
 }
 
-export function ubicacionVenta(data)
+export function ubicacionCarrito(data, partition)
 {
 
     var producer = new Kafka.Producer({
@@ -95,32 +95,6 @@ export function ubicacionVenta(data)
 
         var value = Buffer.from(JSON.stringify(data));
         var key = null;
-        var partition = 1
-        var headers = [
-            { header: "Ubicacion!!" }
-        ]
-        
-        console.log(producer.produce(topicName, partition, value, key, Date.now(), "", headers))
-    });
-  
-    producer.connect();
-}
-
-export function carritoExtrano(data)
-{
-
-    var producer = new Kafka.Producer({
-        'metadata.broker.list': 'localhost:9092',
-        'dr_cb': true
-    });
-      
-    var topicName = 'ubicacion';
-    
-    producer.on('ready', function(arg) {
-
-        var value = Buffer.from(JSON.stringify(data));
-        var key = null;
-        var partition = 2
         var headers = [
             { header: "Ubicacion!!" }
         ]

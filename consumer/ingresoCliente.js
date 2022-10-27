@@ -1,5 +1,5 @@
 import Kafka from 'node-rdkafka';
-
+import { escribirArchivo } from '../archivos.js';
 var consumer = new Kafka.KafkaConsumer({
   'group.id': 'kafka-admin',
   'metadata.broker.list': 'localhost:9092'
@@ -14,15 +14,9 @@ consumer.on('ready', () => {
 
   const received = JSON.parse(data.value.toString())
 
-  console.log(received)
-  /*
-  const users = await sql`
-    insert into miembros
-      (nombre, apellido, rut, correoDueno, patenteCarrito, registro)
-    values
-      (${received.nombre}, ${received.apellido}, ${received.rut}, ${received.correoDueno}, ${received.patenteCarrito}, ${received.resgistro})
-    returning nombre, apellido, rut, correoDueno, patenteCarrito, registro
-  `
-  console.log(`Nuevo miebro registrado : ${users}`);*/
+  await escribirArchivo('./miembros.txt', JSON.stringify(received), (res) => {
+    console.log(`llegue por la particion ${data.partition} y me guarde en el archivo.`)
+  })
+
 })
 

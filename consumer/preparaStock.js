@@ -1,4 +1,5 @@
 import Kafka from 'node-rdkafka';
+import { escribirArchivo } from '../archivos.js';
 
 var consumer = new Kafka.KafkaConsumer({
   'group.id': 'kafka-admin',
@@ -7,7 +8,7 @@ var consumer = new Kafka.KafkaConsumer({
 
 consumer.connect();
 
-var reponer = [[]]
+var reponer = []
 
 consumer.on('ready', () => {
   consumer.subscribe(['venta']);
@@ -19,17 +20,18 @@ consumer.on('ready', () => {
   {
     const received = JSON.parse(data.value.toString())
 
-    if(reponer[reponer.length - 1].length != 5)
+    if(reponer.length != 5)
     {
-        reponer[reponer.length - 1].push(received)
+        reponer.push(received)
     }
     else
     {
-        reponer.push([])
-        reponer[reponer.length - 1].push(received)
+        await escribirArchivo('./stock.txt', JSON.stringify(reponer), (res) => {
+          console.log(res);
+        })
+
+        reponer = []
     }
   }
-
-  console.log(reponer)
 })
 
