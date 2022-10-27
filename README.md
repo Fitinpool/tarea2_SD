@@ -14,30 +14,30 @@ luego iniciamos la el servidor por el lado del cliente
 node ./producer/index.js
 ```
 
-Para este apartado se levanta servidor a servidor ya que son distintos servicios
+Para este apartado se levanta servidor a servidor ya que son distintos servicios, primero ingresamos a la carpeta de consumer y ejecutamos
 
 para ingreso de nuevos miembros
 
 ```sh
-node ./consumer/ingresoCliente.js
+node ingresoCliente.js
 ```
 
 para reponer stock
 
 ```sh
-node ./consumer/preparaStock.js
+node preparaStock.js
 ```
 
 para ventas diarias
 
 ```sh
-node ./consumer/
+node ventaDIaria.js
 ```
 
 para ubicacion
 
 ```sh
-node ./consumer/
+node ubicacion.js
 ```
 
 Para las consultas de cada uno rellenamos postman o thunderclient o api a preferencia con estos datos json
