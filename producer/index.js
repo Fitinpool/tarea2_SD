@@ -4,7 +4,7 @@ import { creaTopics } from "./creaTopic.js";
 import { nuevosMiembros, reponerStock, ubicacionCarrito, ventaDiaria } from "./enviaTopic.js";
 
 const app = express()
-const port = 1000
+const port = 4000
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
