@@ -5,8 +5,6 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "producer": "nodemon ./producer/index.js",
-    "consumer": "node ./consumer/index.js"
   },
   "keywords": [],
   "author": "",

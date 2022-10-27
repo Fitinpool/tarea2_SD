@@ -1,2 +1,0 @@
-{"miembro":"Jorge","vendido":113,"hora":"12:20:21"}
-{"miembro":"Jorge","vendido":113,"hora":"12:20:21"}

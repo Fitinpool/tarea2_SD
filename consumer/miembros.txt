@@ -1,5 +1,0 @@
-{"nombre":"Jorge","apellido":"Guzman","rut":"12433232-1","correoDueno":"Jorge.Guzman@sopaipillaschile.com","patenteCarrito":"FSLS42","registro":"no premium"}
-{"nombre":"Jorge","apellido":"Guzman","rut":"12433232-1","correoDueno":"Jorge.Guzman@sopaipillaschile.com","patenteCarrito":"FSLS42","registro":"no premium"}
-{"nombre":"Jorge","apellido":"Guzman","rut":"12433232-1","correoDueno":"Jorge.Guzman@sopaipillaschile.com","patenteCarrito":"FSLS42","registro":"premium"}
-{"nombre":"Jorge","apellido":"Guzman","rut":"12433232-1","correoDueno":"Jorge.Guzman@sopaipillaschile.com","patenteCarrito":"FSLS42","registro":"premium"}
-{"nombre":"Jorge","apellido":"Guzman","rut":"12433232-1","correoDueno":"Jorge.Guzman@sopaipillaschile.com","patenteCarrito":"FSLS42","registro":"premium"}
